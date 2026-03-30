@@ -1,0 +1,20 @@
+# Definition for a pair.
+# class Pair:
+#     def __init__(self, key: int, value: str):
+#         self.key = key
+#         self.value = value
+class Solution:
+    def insertionSort(self, pairs: List[Pair]) -> List[List[Pair]]:
+        steps = []
+        if pairs == []:
+            return []
+        steps.append(list(pairs))
+        for i in range(1,len(pairs)):
+            j = i - 1
+            while pairs[j+1].key < pairs[j].key and j >= 0:
+                temp = pairs[j+1]
+                pairs[j+1] = pairs[j]
+                pairs[j] = temp
+                j -= 1
+            steps.append(list(pairs))
+        return steps
